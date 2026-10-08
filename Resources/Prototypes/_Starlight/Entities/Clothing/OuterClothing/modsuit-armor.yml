@@ -1,0 +1,86 @@
+﻿- type: entity
+  abstract: true
+  parent: [ClothingOuterBase, GeigerCounterClothing, AllowSuitStorageClothing]
+  id: ClothingOuterModsuitBase
+  name: base modsuit
+  components:
+    - type: PressureProtection
+      highPressureMultiplier: 0.3
+      lowPressureMultiplier: 1000
+    - type: TemperatureProtection
+      heatingCoefficient: 0.01
+      coolingCoefficient: 0.01
+    - type: ClothingSpeedModifier
+      walkModifier: 0.8
+      sprintModifier: 0.8
+    - type: HeldSpeedModifier
+    - type: Item
+      size: Ginormous
+    - type: Pierceable
+      level: Metal
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.90
+          Slash: 0.90
+          Piercing: 0.95
+          Heat: 0.90
+          Radiation: 0.25
+      ignoreKnockdown: true
+    #- type: ToggleableClothing
+     # slot: head
+     # redirectDraw: true
+    - type: ContainerContainer
+      containers:
+        toggleable-clothing: !type:ContainerSlot {}
+        cell_slot: !type:ContainerSlot
+    - type: GroupExamine
+    #- type: Tag   - Look for origin
+      #tags:
+       # - Modsuit
+       # - WhitelistChameleon
+    - type: ProtectedFromStepTriggers
+      slots: WITHOUT_POCKET
+    #- type: DamageONInteractProtection
+      #damageProtection:
+      #  flatReductions:
+      #    heat: 10
+     # slots: OUTERCLOTHING
+      #- type: HardsuitChemicalImmunity
+    - type: HideLayerClothing
+      slots:
+      - Tail
+    - type: ArmorSparkEffect
+    #- type: HeadRadiationBlocker
+    - type: PowerCellSlot
+      cellSlotId: cell_slot
+    - type: ItemSlots
+      slots:
+        cell_slot:
+          name: power-cell-slot-component-slot-name-default
+          startingItem: PowerCellMedium
+         # blacklist:
+          #  tags:
+       #       -MechReactor
+    - type: StainBlocker
+      slots: [INNERCLOTHING, FEET, GLOVES]
+
+- type: entity
+  parent: [ClothingOuterModsuitBase]
+  id: ClothingOuterModsuitSecurity
+  name: security modsuit
+  description: "A Test Implementation of the Security Modsuit"
+  components:
+  - type: Sprite
+    sprite: _Starlight/Clothing/OuterClothing/Modsuits/security-modsuit.rsi
+    layers:
+      - state: icon-security-chestplate-sealed
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+        - state: security-chestplate-sealed
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetModsuitSecurity
+
+
+

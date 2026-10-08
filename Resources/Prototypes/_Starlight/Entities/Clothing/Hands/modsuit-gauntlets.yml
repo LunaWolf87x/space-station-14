@@ -1,0 +1,49 @@
+﻿- type: entity
+  abstract: true
+  parent: [ Clothing ]
+  id: ClothingHandsModsuitBase
+  name: base modsuit gauntlets
+  components:
+    - type: Sprite
+      state: icon #A default state looking for the icon.png in the .rsi, will need to be changed given modsuits currently do not use that as their base
+    - type: Clickable
+    - type: InteractionOutline
+    - type: Clothing
+      equipSound: /Audio/Mecha/mechmove03.ogg
+      unequipSound: /Audio/Mecha/mechmove03.ogg
+      slots: [ gloves ]
+    - type: PressureProtection
+      highPressureMultiplier: 0.3
+      lowPressureMultiplier: 1000
+    - type: TemperatureProtection
+      heatingCoefficient: 0.1
+      coolingCoefficient: 0.1
+    - type: Pierceable
+      level: Metal
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.90
+          Slash: 0.90
+          Piercing: 0.90
+          Heat: 0.90
+          Radiation: 0.25
+    - type: GroupExamine
+      #- type: Tag
+      #tags:
+      #  - WhitelistChameleon
+
+- type: entity
+  parent: [ ClothingHandsModsuitBase ]
+  id: ClothingHandsGauntletsModsuitSecurity
+  name: security modsuit gauntlets
+  description: A test version of the gauntlets helmet for modsuits
+  components:
+    - type: Sprite
+      sprite: _Starlight/Clothing/Hands/ModsuitGauntlets/security-modsuit.rsi
+      layers:
+        - state: icon-security-gauntlets-sealed
+    - type: Clothing
+      clothingVisuals:
+        gloves:
+          - state: security-gauntlets-sealed

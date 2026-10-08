@@ -1,0 +1,29 @@
+﻿{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Null",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon-security-boots",
+      "copyright": "Null"
+    },
+    {
+      "name": "icon-security-boots-sealed",
+      "copyright": "Null"
+    },
+    {
+      "name": "security-boots",
+      "directions": 4,
+      "copyright": "Null"
+    },
+    {
+      "name": "security-boots-sealed",
+      "directions": 4,
+      "copyright": "Null"
+    }
+  ]
+}
