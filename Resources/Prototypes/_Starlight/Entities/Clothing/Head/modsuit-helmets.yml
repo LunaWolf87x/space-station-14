@@ -1,0 +1,61 @@
+﻿- type: entity
+  abstract: true
+  # Hardsuit Base Helmet claims to need to parent due to not being a real item. Will follow suit until proven otherwise
+  id: ClothingHeadModsuitBase
+  name: base modsuit helmet
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: BreathMask
+    - type: Sprite
+      state: icon #A default state looking for the icon.png in the .rsi, will need to be changed given modsuits currently do not use that as their base
+    - type: Clickable
+    - type: InteractionOutline
+    - type: Clothing
+      equipSound: /Audio/Mecha/mechmove03.ogg
+      unequipSound: /Audio/Mecha/mechmove03.ogg
+      quickEquip: false
+      slots: [ HEAD ]
+    - type: PressureProtection
+      highPressureMultiplier: 0.3
+      lowPressureMultiplier: 1000
+    - type: TemperatureProtection
+      heatingCoefficient: 0.1
+      coolingCoefficient: 0.1
+    - type: Pierceable
+      level: Metal
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.90
+          Slash: 0.90
+          Piercing: 0.90
+          Heat: 0.90
+          Radiation: 0.25
+    - type: GroupExamine
+    - type: IngestionBlocker
+    #- type: Tag
+      #tags:
+      #  - WhitelistChameleon
+    - type: IdentityBlocker
+    - type: HideLayerClothing
+      slots:
+        - Hair
+        - Snout
+        - HeadTop
+        - HeadSide
+        - FacialHair
+
+- type: entity
+  parent: [ ClothingHeadModsuitBase ]
+  id: ClothingHeadHelmetModsuitSecurity
+  name: security modsuit helmet
+  description: A test version of the security helmet for modsuits
+  components:
+  - type: Sprite
+    sprite: _Starlight/Clothing/Head/Modsuits/security-modsuit.rsi
+    layers:
+      - state: icon-security-helmet-sealed
+  - type: Clothing
+    clothingVisuals:
+      head:
+        - state: security-helmet-sealed

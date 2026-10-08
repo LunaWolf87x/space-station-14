@@ -1,0 +1,49 @@
+﻿- type: entity
+  abstract: true
+  parent: [ Clothing, ContentsExplosionResistanceBase ]
+  id: ClothingModsuitControlBase
+  name: base modsuit control module
+  components:
+    - type: Sprite
+      state: icon #A default state looking for the icon.png in the .rsi, will need to be changed given modsuits currently do not use that as their base
+    - type: Clothing
+      quickEquip: false
+      equipSound: /Audio/Mecha/mechmove03.ogg
+      unequipSound: /Audio/Mecha/mechmove03.ogg
+      slots: [ back ]
+    - type: Storage
+      grid:
+      - 0,0,2,3
+      maxItemSize: Huge
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          ents: []
+    - type: UserInterface
+      interfaces:
+        enum.StorageUiKey.Key:
+          type: StorageBoundUserInterface
+    - type: SwitchableEquipMode
+    - type: UseDelay
+      delay: 0.5
+    - type: ExplosionResistance
+      damageCoefficient: 0.9
+    - type: Tag
+      tags:
+      - Backpack
+      #  - WhitelistChameleon
+
+- type: entity
+  parent: [ ClothingModsuitControlBase ]
+  id: ClothingModsuitControlSecurity
+  name: security modsuit control module
+  description: A test version of the security modsuit control module
+  components:
+    - type: Sprite
+      sprite: _Starlight/Clothing/Back/ModsuitControlModules/security-modsuit.rsi
+      layers:
+        - state: icon-security-control-sealed
+    - type: Clothing
+      clothingVisuals:
+        back:
+          - state: security-control-sealed
