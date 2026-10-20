@@ -47,3 +47,41 @@
       clothingVisuals:
         gloves:
           - state: security-gauntlets-sealed
+
+#################################################################################################
+- type: entity
+  id: SecurityModGauntlets
+  parent: ClothingHandsBase
+  name: security MOD gauntlets
+  components:
+    - type: Sprite
+      sprite: _Starlight/Clothing/Hands/ModsuitGauntlets/new-security-modsuit.rsi
+      layers:
+        - state: icon-gauntlets
+          map: ["enum.ToggleableVisuals.Enabled"]
+
+    - type: Clothing
+      sprite: _Starlight/Clothing/Hands/ModsuitGauntlets/new-security-modsuit.rsi
+      slots:
+        - gloves
+      clothingVisuals:
+        gloves:
+          - state: equipped-gauntlets
+
+    - type: ToggleableVisuals
+      spriteLayer: enum.ToggleableVisuals.Layer
+      clothingVisuals:
+        gloves:
+          - state: equipped-gauntlets-sealed
+
+    - type: ModsuitClothing
+
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleableVisuals.Enabled:
+          emum.ModsuitVisuals.IconLayer:
+            True: {state: "icon-gauntlets-sealed"}
+            False: {state: "icon-gauntlets"}
+
+

@@ -83,4 +83,54 @@
     clothingPrototype: ClothingHeadHelmetModsuitSecurity
 
 
+#################################################################
+- type: entity
+  id: SecurityModChestplate
+  parent: [ClothingOuterBase, AllowSuitStorageClothing]
+  name: security MOD chestplate
+  components:
+    - type: Sprite
+      sprite: _Starlight/Clothing/OuterClothing/Modsuits/new-security-modsuit.rsi
+      layers:
+        - state: icon-chestplate
+          map: ["enum.ToggleableVisuals.Enabled"]
+
+    - type: Clothing
+      sprite: _Starlight/Clothing/OuterClothing/Modsuits/new-security-modsuit.rsi
+      slots:
+        - outerClothing
+      clothingVisuals:
+        outerClothing:
+          - state: equipped-chestplate
+
+    - type: PressureProtection
+      highPressureMultiplier: 0.3
+      lowPressureMultiplier: 1000
+
+    - type: TemperatureProtection
+      heatingCoefficient: 0.1
+      coolingCoefficient: 0.1
+
+    - type: ModsuitClothing
+      lowPressureModifier: 0
+      lowPressureMultiplier: 1000
+      highPressureModifier: 0
+      highPressureMultiplier: 0.3
+      coefficientModifier: 0.8
+
+    - type: ToggleableVisuals
+      spriteLayer: enum.ToggleableVisuals.Layer
+      clothingVisuals:
+        outerClothing:
+          - state: equipped-chestplate-sealed
+
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleableVisuals.Enabled:
+          emum.ModsuitVisuals.IconLayer:
+            True: {state: "icon-chestplate-sealed"}
+            False: {state: "icon-chestplate"}
+
+
 

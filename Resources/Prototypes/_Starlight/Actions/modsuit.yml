@@ -1,0 +1,32 @@
+﻿- type: entity
+  parent: BaseAction
+  id: ActionModsuitWheel
+  name: Deploy MOD
+  description: Deploy your MODsuit
+  components:
+    - type: Action
+      itemIconStyle: NoItem
+      icon:
+        sprite: _Starlight/Actions/actions-modsuit.rsi
+        state: activate
+    - type: InstantAction
+      event: !type:DeployModsuit
+
+- type: entity
+  parent: BaseAction
+  id: ActionModsuitPower
+  name: Activate MODsuit
+  description: Activate your MODsuit
+  components:
+    - type: Action
+      itemIconStyle: NoItem
+      useDelay: 10
+      icon:
+        sprite: _Starlight/Actions/actions-modsuit.rsi
+        state: activate-ready
+    - type: InstantAction
+      event: !type:PowerModsuit
+
+
+
+

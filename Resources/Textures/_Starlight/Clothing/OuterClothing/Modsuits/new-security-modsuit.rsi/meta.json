@@ -1,0 +1,29 @@
+﻿{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Null",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon-chestplate",
+      "copyright": "Null"
+    },
+    {
+      "name": "icon-chestplate-sealed",
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-chestplate",
+      "directions": 4,
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-chestplate-sealed",
+      "directions": 4,
+      "copyright": "Null"
+    }
+  ]
+}
