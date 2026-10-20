@@ -59,3 +59,52 @@
     clothingVisuals:
       head:
         - state: security-helmet-sealed
+
+#################################################################
+- type: entity
+  id: SecurityModHelmet
+  parent: ClothingHeadBase
+  name: security MOD helmet
+  components:
+    - type: Sprite
+      sprite: _Starlight/Clothing/Head/Modsuits/new-security-modsuit.rsi
+      layers:
+        - state: icon-helmet
+          map: ["enum.ToggleableVisuals.Enabled"]
+
+    - type: Clothing
+      sprite: _Starlight/Clothing/Head/Modsuits/new-security-modsuit.rsi
+      slots:
+        - head
+      clothingVisuals:
+        head:
+          - state: equipped-helmet
+
+    - type: PressureProtection
+      highPressureMultiplier: 0.3
+      lowPressureMultiplier: 1000
+
+    - type: TemperatureProtection
+      heatingCoefficient: 0.1
+      coolingCoefficient: 0.1
+
+    - type: ModsuitClothing
+      lowPressureModifier: 0
+      lowPressureMultiplier: 1000
+      highPressureModifier: 0
+      highPressureMultiplier: 0.3
+      coefficientModifier: 0.8
+
+    - type: ToggleableVisuals
+      spriteLayer: enum.ToggleableVisuals.Layer
+      clothingVisuals:
+        head:
+          - state: equipped-helmet-sealed
+
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleableVisuals.Enabled:
+          emum.ModsuitVisuals.IconLayer:
+            True: {state: "icon-helmet-sealed"}
+            False: {state: "icon-helmet"}

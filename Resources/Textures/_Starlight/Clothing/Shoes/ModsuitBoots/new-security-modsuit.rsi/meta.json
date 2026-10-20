@@ -1,0 +1,29 @@
+﻿{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Null",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon-boots",
+      "copyright": "Null"
+    },
+    {
+      "name": "icon-boots-sealed",
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-boots",
+      "directions": 4,
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-boots-sealed",
+      "directions": 4,
+      "copyright": "Null"
+    }
+  ]
+}

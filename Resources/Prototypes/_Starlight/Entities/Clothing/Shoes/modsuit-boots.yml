@@ -48,3 +48,40 @@
       clothingVisuals:
         shoes:
           - state: security-boots-sealed
+
+
+#################################################################################################
+- type: entity
+  id: SecurityModBoots
+  parent: ClothingShoesBase
+  name: security MOD boots
+  components:
+    - type: Sprite
+      sprite: _Starlight/Clothing/Shoes/ModsuitBoots/new-security-modsuit.rsi
+      layers:
+        - state: icon-boots
+          map: ["enum.ToggleableVisuals.Enabled"]
+
+    - type: Clothing
+      sprite: _Starlight/Clothing/Shoes/ModsuitBoots/new-security-modsuit.rsi
+      slots:
+        - FEET
+      clothingVisuals:
+        shoes:
+          - state: equipped-boots
+
+    - type: ToggleableVisuals
+      spriteLayer: enum.ToggleableVisuals.Layer
+      clothingVisuals:
+        shoes:
+          - state: equipped-boots-sealed
+
+    - type: ModsuitClothing
+
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleableVisuals.Enabled:
+          emum.ModsuitVisuals.IconLayer:
+            True: {state: "icon-boots-sealed"}
+            False: {state: "icon-boots"}

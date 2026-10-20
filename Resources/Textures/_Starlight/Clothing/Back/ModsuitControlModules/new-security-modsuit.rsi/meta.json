@@ -1,0 +1,37 @@
+﻿{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Null",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon-control",
+      "copyright": "Null"
+    },
+    {
+      "name": "icon-control-sealed",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ],
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-control",
+      "directions": 4,
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-control-sealed",
+      "directions": 4,
+      "copyright": "Null"
+    }
+  ]
+}

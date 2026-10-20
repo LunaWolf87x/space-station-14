@@ -47,3 +47,79 @@
       clothingVisuals:
         back:
           - state: security-control-sealed
+
+
+#################################################################################################
+- type: entity
+  abstract: true
+  id: ModsuitBase
+  parent: ClothingBackpack
+  components:
+    - type: Sprite
+      sprite: _Starlight/Clothing/Back/ModsuitControlModules/new-security-modsuit.rsi
+      layers:
+        - state: icon-control
+          map: ["enum.ToggleableVisuals.Enabled"]
+
+    - type: Clothing
+      sprite: _Starlight/Clothing/Back/ModsuitControlModules/new-security-modsuit.rsi
+      slots:
+        - back
+      clothingVisuals:
+        back:
+          - state: equipped-control
+
+    - type: ToggleableVisuals
+      spriteLayer: enum.ToggleableVisuals.Layer
+      clothingVisuals:
+        back:
+          - state: equipped-control-sealed
+
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.ToggleableVisuals.Enabled:
+          emum.ModsuitVisuals.IconLayer:
+            True: {state: "icon-control-sealed"}
+            False: {state: "icon-control"}
+
+    - type: ContainerContainer
+      containers:
+        helmet: !type:ContainerSlot { }
+        chestplate: !type:ContainerSlot { }
+        gauntlets: !type:ContainerSlot { }
+        boots: !type:ContainerSlot { }
+
+        storedGauntlets: !type:ContainerSlot { }
+        storedBoots: !type:ContainerSlot { }
+
+    - type: Modsuit
+      parts:
+        Helmet: SecurityModHelmet
+        Chestplate: SecurityModChestplate
+        Gauntlets: SecurityModGauntlets
+        Boots: SecurityModBoots
+      actionEndpoints:
+        - ActionModsuitWheel
+        - ActionModsuitPower
+
+    - type: UserInterface
+      interfaces:
+        enum.ModsuitUiKey.Radial:
+          type: ModsuitMenuUserInterface
+
+####
+- type: entity
+  id: SecurityModsuit
+  parent: ModsuitBase
+  name: security modsuit control module new
+  description: A new iteration of the test security modsuit control module
+  components:
+    - type: Clothing
+      sprite: _Starlight/Clothing/Back/ModsuitControlModules/new-security-modsuit.rsi
+      slots:
+        - back
+      clothingVisuals:
+        back:
+          - state: equipped-control
+

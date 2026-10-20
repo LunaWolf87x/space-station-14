@@ -1,0 +1,29 @@
+﻿{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Null",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon-gauntlets",
+      "copyright": "Null"
+    },
+    {
+      "name": "icon-gauntlets-sealed",
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-gauntlets",
+      "directions": 4,
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-gauntlets-sealed",
+      "directions": 4,
+      "copyright": "Null"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+﻿{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Null",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon-helmet",
+      "copyright": "Null"
+    },
+    {
+      "name": "icon-helmet-sealed",
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-helmet",
+      "directions": 4,
+      "copyright": "Null"
+    },
+    {
+      "name": "equipped-helmet-sealed",
+      "directions": 4,
+      "copyright": "Null"
+    }
+  ]
+}
