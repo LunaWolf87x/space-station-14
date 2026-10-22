@@ -49,7 +49,11 @@
           - state: security-control-sealed
 
 
-#################################################################################################
+##################################################################################################
+############
+############
+############
+##################################################################################################
 - type: entity
   abstract: true
   id: ModsuitBase
@@ -90,7 +94,7 @@
         gauntlets: !type:ContainerSlot { }
         boots: !type:ContainerSlot { }
 
-        storedGauntlets: !type:ContainerSlot { }
+        storedGloves: !type:ContainerSlot { }
         storedBoots: !type:ContainerSlot { }
 
     - type: Modsuit
