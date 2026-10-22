@@ -19,14 +19,14 @@ using Robust.Shared.Timing;
 using DependencyAttribute = Robust.Shared.IoC.DependencyAttribute;
 using Timer = Robust.Shared.Timing.Timer; //Timer requested a specifier, will try this one
 
-namespace Content.Shared._starlight.Modsuits;
+namespace Content.Shared._Starlight.Modsuits;
 
 public sealed partial class ModsuitSystem : SharedModsuitSystem
 {
-    [Dependency] private SharedContainerSystem _container = default!;
-    [Dependency] private InventorySystem _inventory = default!;
-    [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedContainerSystem _container = null!;
+    [Dependency] private InventorySystem _inventory = null!;
+    [Dependency] private SharedAudioSystem _audio = null!;
+    [Dependency] private SharedAppearanceSystem _appearance = null!;
     //[Dependency] private BarotraumaSystem _barotraumaSystem = default!;
     //[Dependency] private TemperatureSystem _temperatureSystem = default!;
 
@@ -45,11 +45,11 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
         var slot = ModsuitContainers.GetInventorySlot(args.Part);
         if (ModsuitContainers.TryGetStorageContainer(args.Part, out var storageName))
         {
-            if (_inventory.TryGetSlotEntity(performer, slot, out var oldItem) && oldItem != null)
+            if (_inventory.TryGetSlotEntity(performer, slot, out var oldItem) /* && oldItem != null*/)
             {
                 if (_inventory.TryUnequip(performer, performer, slot, force: true))
                 {
-                    if (_container.TryGetContainer(uid, storageName, out var storage))
+                    if (_container.TryGetContainer(uid, storageName, out var storage)) //BaseContainer?
                         _container.Insert(oldItem.Value, storage);
                 }
             }
@@ -57,7 +57,7 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
 
         if (!_inventory.TryEquip(performer, entity, slot, force: true))
         {
-            if (_inventory.TryGetSlotEntity(performer, slot, out var oldItem) && oldItem != null)
+            if (_inventory.TryGetSlotEntity(performer, slot, out var oldItem) /*&& oldItem != null*/)
             {
                 _audio.PlayPredicted(component.ErrorSound, uid, performer, AudioParams.Default.WithVolume(-2f));
             }
@@ -93,7 +93,7 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
             return;
         if (ModsuitContainers.TryGetStorageContainer(args.Part, out var storageName))
         {
-            if (_container.TryGetContainer(uid, storageName, out var baseContainer))
+            if (!_container.TryGetContainer(uid, storageName, out var baseContainer))
                 return;
             if (baseContainer is not ContainerSlot storage)
                 return;
