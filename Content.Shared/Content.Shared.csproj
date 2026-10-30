@@ -2,6 +2,7 @@
   <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <WarningsAsErrors>RA0032;nullable</WarningsAsErrors>
+    <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
   <Import Project="../MSBuild/Content.props" />
   <ItemGroup>

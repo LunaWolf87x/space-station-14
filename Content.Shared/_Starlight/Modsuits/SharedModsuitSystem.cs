@@ -22,7 +22,6 @@ public abstract partial class SharedModsuitSystem : EntitySystem
         SubscribeLocalEvent<ModsuitComponent, MapInitEvent>(OnMapInIt);
 
         SubscribeLocalEvent<ModsuitComponent, GotEquippedEvent>(OnEquipped);
-        //SubscribeLocalEvent<ModsuitComponent, GotUnequippedEvent>(OnUnequipped);
         //UI handling Events
         SubscribeLocalEvent<ModsuitComponent, DeployModsuit>(OpenRadialUI);
         SubscribeLocalEvent<ModsuitComponent, ModsuitSystemMessage>(OnSystemMessage);
@@ -30,7 +29,7 @@ public abstract partial class SharedModsuitSystem : EntitySystem
         //MODsuit state changing events
         SubscribeLocalEvent<ModsuitComponent, DeployPartEvent>(DeployPart);
         SubscribeLocalEvent<ModsuitComponent, RetractPartEvent>(RetractPart);
-        ///SubscribeLocalEvent<ModsuitComponent, CheckAirtightnessEvent>(CheckAirtightness);
+        SubscribeLocalEvent<ModsuitComponent, CheckAirtightnessEvent>(CheckAirtightness);
     }
     // Spawns MODsuit parts into respective containers whenever it's initialized on the Map
     private void OnMapInIt(EntityUid uid, ModsuitComponent component, MapInitEvent args)
@@ -72,21 +71,7 @@ public abstract partial class SharedModsuitSystem : EntitySystem
             Dirty(uid, component);
         }
     }
-/*
-    private void OnUnequipped(EntityUid uid, ModsuitComponent component, GotUnequippedEvent args)
-    {
-       foreach (var action in component.ActionEntities)
-       {
-            var actions = _actions.GetActions(args.EquipTarget);
-            if (actions.Contains(action)) //attempting to find a way to check and see if the entity has the action before attempting to remove it. Currently, does not work as intended
-            {
-                _actions.RemoveAction(args.EquipTarget, action);
-            }
-       }
-       component.ActionEntities.Clear();
-       Dirty(uid, component);
-    }
-*/
+
     [SubscribeLocalEvent]
     public void OnGotUnequipped(Entity<ModsuitComponent> ent, ref GotUnequippedEvent args)
     {
@@ -129,8 +114,8 @@ public abstract partial class SharedModsuitSystem : EntitySystem
     {
     }
 
-    /*protected virtual void CheckAirtightness(Entity<ModsuitComponent> ent, ref CheckAirtightnessEvent args)
+    protected virtual void CheckAirtightness(Entity<ModsuitComponent> ent, ref CheckAirtightnessEvent args)
     {
     }
-    */
+
 }
