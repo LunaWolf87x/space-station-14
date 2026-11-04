@@ -16,5 +16,5 @@ public sealed partial class ModsuitClothingComponent : Component
     [DataField]
     public float HighPressureMultiplier { get; private set; } = 1.0f;
     [DataField]
-    public float CoefficientMultiplier { get; private set; } = 0f;
+    public float CoefficientModifier { get; private set; } = 0f;
 }
