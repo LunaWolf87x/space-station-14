@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Timers;
 using Content.Server._Starlight.Atmos.Events;
+using Content.Server._Starlight.Temperature.Events;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Temperature.Systems;
@@ -38,7 +39,7 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
     {
         base.Initialize();
         SubscribeLocalEvent<PressureProtectionComponent, RefreshPressureProtectionModifiersEvent>(OnPressureProtectionEvent);
-        //SubscribeLocalEvent(); //- Looking for a way to update temperature protection modifiers with an event. It may already exist in some form
+        SubscribeLocalEvent<TemperatureProtectionComponent, RefreshTemperatureProtectionModifiersEvent>(OnTemperatureProtectionEvent);
     }
 
     protected override void DeployPart(EntityUid uid, ModsuitComponent component, DeployPartEvent args)
@@ -181,13 +182,13 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
                     if (TryComp<PressureProtectionComponent>(partEntity, out var pressureProtection))
                         _barotraumaSystem.RefreshPressureProtectionModifiers(performer, (partEntity, pressureProtection));//Need to pass through the owning entity ie: Strayed
                 }
-/*
+
                 if (component.ProvidesTemperatureProtection)
                 {
                     if (TryComp<TemperatureProtectionComponent>(partEntity, out var temperatureProtection))
                         _temperatureSystem.RefreshTemperatureProtectionModifiers((partEntity, temperatureProtection)); //Once again, variable is attempting to access a function that does not exist
                 }
-*/
+
                 if (TryComp<ModsuitClothingComponent>(partEntity, out var modComp))
                     modComp.ValuesChanged = true;
             }
@@ -214,10 +215,10 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
                 var partEntity = component.SpawnedParts[part.Key];
                 if (TryComp<PressureProtectionComponent>(partEntity, out var pressureProtection))
                     _barotraumaSystem.RefreshPressureProtectionModifiers(performer, (partEntity, pressureProtection)); //lacks any reference to the entity its being equipped to
-                /*
+
                 if (TryComp<TemperatureProtectionComponent>(partEntity, out var temperatureProtection))
-                    _temperatureSystem.RefresTemperatureProtectionModifiers(partEntity, temperatureProtection);
-                */
+                    _temperatureSystem.RefreshTemperatureProtectionModifiers((partEntity, temperatureProtection));
+
                 if (TryComp<ModsuitClothingComponent>(partEntity, out var modComp))
                     modComp.ValuesChanged = false;
             }
@@ -236,15 +237,15 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
             comp.ValuesChanged ? 1f / comp.HighPressureMultiplier : comp.HighPressureMultiplier
         );
     }
-/*
+
     private void OnTemperatureProtectionEvent(Entity<TemperatureProtectionComponent> ent,
-        ref RefreshTempratureProtectionModifiersEvent args)
+        ref RefreshTemperatureProtectionModifiersEvent args)
     {
-        if (TryComp<ModsuitClothingComponent>(ent, out var comp))
+        if (!TryComp<ModsuitClothingComponent>(ent, out var comp))
             return;
         args.ModifyProtection(
             (comp.ValuesChanged ? -1 : 1) * comp.CoefficientModifier
         );
     }
-*/
+
 }

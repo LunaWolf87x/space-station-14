@@ -1,5 +1,6 @@
 ﻿using Content.Shared.Inventory;
 
+
 namespace Content.Server._Starlight.Atmos.Events
 {
     public sealed class RefreshPressureProtectionModifiersEvent : EntityEventArgs
