@@ -50,11 +50,11 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
         var slot = ModsuitContainers.GetInventorySlot(args.Part);
         if (ModsuitContainers.TryGetStorageContainer(args.Part, out var storageName))
         {
-            if (_inventory.TryGetSlotEntity(performer, slot, out var oldItem) /* && oldItem != null*/)
+            if (_inventory.TryGetSlotEntity(performer, slot, out var oldItem))
             {
                 if (_inventory.TryUnequip(performer, performer, slot, force: true))
                 {
-                    if (_container.TryGetContainer(uid, storageName, out var storage)) //BaseContainer?
+                    if (_container.TryGetContainer(uid, storageName, out var storage))
                         _container.Insert(oldItem.Value, storage);
                 }
             }
@@ -62,7 +62,7 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
 
         if (!_inventory.TryEquip(performer, entity, slot, force: true))
         {
-            if (_inventory.TryGetSlotEntity(performer, slot, out var oldItem) /*&& oldItem != null*/)
+            if (_inventory.TryGetSlotEntity(performer, slot, out var oldItem))
             {
                 _audio.PlayPredicted(component.ErrorSound, uid, performer, AudioParams.Default.WithVolume(-2f));
             }
@@ -180,13 +180,13 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
                 if (component.ProvidesPressureProtection)
                 {
                     if (TryComp<PressureProtectionComponent>(partEntity, out var pressureProtection))
-                        _barotraumaSystem.RefreshPressureProtectionModifiers(performer, (partEntity, pressureProtection));//Need to pass through the owning entity ie: Strayed
+                        _barotraumaSystem.RefreshPressureProtectionModifiers(performer, (partEntity, pressureProtection));
                 }
 
                 if (component.ProvidesTemperatureProtection)
                 {
                     if (TryComp<TemperatureProtectionComponent>(partEntity, out var temperatureProtection))
-                        _temperatureSystem.RefreshTemperatureProtectionModifiers((partEntity, temperatureProtection)); //Once again, variable is attempting to access a function that does not exist
+                        _temperatureSystem.RefreshTemperatureProtectionModifiers((partEntity, temperatureProtection));
                 }
 
                 if (TryComp<ModsuitClothingComponent>(partEntity, out var modComp))
@@ -214,7 +214,7 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
                 var performer = args.Player;
                 var partEntity = component.SpawnedParts[part.Key];
                 if (TryComp<PressureProtectionComponent>(partEntity, out var pressureProtection))
-                    _barotraumaSystem.RefreshPressureProtectionModifiers(performer, (partEntity, pressureProtection)); //lacks any reference to the entity its being equipped to
+                    _barotraumaSystem.RefreshPressureProtectionModifiers(performer, (partEntity, pressureProtection));
 
                 if (TryComp<TemperatureProtectionComponent>(partEntity, out var temperatureProtection))
                     _temperatureSystem.RefreshTemperatureProtectionModifiers((partEntity, temperatureProtection));
@@ -244,7 +244,7 @@ public sealed partial class ModsuitSystem : SharedModsuitSystem
         if (!TryComp<ModsuitClothingComponent>(ent, out var comp))
             return;
         args.ModifyProtection(
-            (comp.ValuesChanged ? -1 : 1) * comp.CoefficientModifier
+            (comp.ValuesChanged ? 1 : -1) * comp.CoefficientModifier
         );
     }
 

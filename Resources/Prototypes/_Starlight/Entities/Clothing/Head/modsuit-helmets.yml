@@ -85,15 +85,15 @@
       lowPressureMultiplier: 1
 
     - type: TemperatureProtection
-      heatingCoefficient: 0.1
-      coolingCoefficient: 0.1
+      heatingCoefficient: 0.8
+      coolingCoefficient: 0.8
 
     - type: ModsuitClothing
       lowPressureModifier: 0
       lowPressureMultiplier: 1000
       highPressureModifier: 0
       highPressureMultiplier: 0.1
-      coefficientModifier: 0.8
+      coefficientModifier: 0.6 #This is the Amount that will be Subtracted from Default Heating and Cooling Coefficients. EX coolCo: 0.8 - coeffMod 0.6 = 0.2
 
     - type: ToggleableVisuals
       spriteLayer: enum.ToggleableVisuals.Layer
